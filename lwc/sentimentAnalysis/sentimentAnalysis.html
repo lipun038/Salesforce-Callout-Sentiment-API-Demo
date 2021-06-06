@@ -1,0 +1,31 @@
+<template>
+    <template if:true={isSpinner}>
+        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </template>
+    <div class="mainContainer">
+        <div class="row">
+            <h1 style="font-weight:bold;">Please Share Your Experience</h1>
+            <lightning-textarea 
+                name="strFeedback" 
+                value={strFeedback} 
+                onchange={handleOnchange}>   
+            </lightning-textarea>
+        </div>
+        <br/>
+        <div class="row">
+            <button class="slds-button slds-button_brand slds-button_stretch"
+            onclick={fetchSentiment}>Check Sentiment</button>
+        </div>
+        <br/>
+        <template if:true={error}>
+            <div class="row" style="text-align:center;">
+                <h1 class="slds-text-heading_small"><b>Error :</b> {error}</h1>
+            </div>
+        </template>
+        <template if:true={strSentiment}>
+            <div class="row" style="text-align:center;">
+                <h1 class="slds-text-heading_small"><b>Intensifier :</b> {strSentiment}</h1>
+            </div>
+        </template>
+    </div>  
+</template>
